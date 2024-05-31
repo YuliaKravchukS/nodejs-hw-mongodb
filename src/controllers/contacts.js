@@ -6,6 +6,7 @@ import {
   getContactById,
   updateContact,
 } from '../services/contacts.js';
+import mongoose from 'mongoose';
 
 export const getContactsController = async (req, res) => {
   const contacts = await getAllContacts();
@@ -19,6 +20,13 @@ export const getContactsController = async (req, res) => {
 
 export const getContactsByIdController = async (req, res, next) => {
   const { contactId } = req.params;
+
+  if (!mongoose.isValidObjectId(contactId)) {
+    return res.status(404).json({
+      status: 404,
+      message: 'Invalid Id format',
+    });
+  }
 
   const contact = await getContactById(contactId);
   if (!contact) {
