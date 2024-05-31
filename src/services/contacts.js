@@ -5,26 +5,30 @@ export const getAllContacts = async () => {
   return contacts;
 };
 
-export const getContactsById = async (contactId) => {
+export const getContactById = async (contactId) => {
   const contact = await ContactsCollection.findById(contactId);
   return contact;
 };
 
-export const createContacts = async (contact) => {
+export const createContact = async (contact) => {
   const newContact = await ContactsCollection.create(contact);
   return newContact;
 };
-export const updateStudent = async (contactId, contact, options = {}) => {
+export const updateContact = async (contactId, contact, options = {}) => {
   const updateContact = await ContactsCollection.findOneAndUpdate(
     {
       _id: contactId,
     },
     contact,
+    {
+      new: true,
+      ...options,
+    },
   );
-  return updateContact.value;
+  return updateContact;
 };
 
-export const deleteStudent = async (contactId) => {
+export const deleteContact = async (contactId) => {
   const contact = await ContactsCollection.findOneAndDelete({ _id: contactId });
   return contact;
 };

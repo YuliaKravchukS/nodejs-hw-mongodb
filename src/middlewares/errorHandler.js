@@ -4,7 +4,7 @@ export const errorHandler = (err, req, res, next) => {
   if (isHttpError(err)) {
     return res.status(err.status).json({
       status: err.status,
-      message: err.message,
+      message: err.name,
       data: {
         message: err.message,
       },
