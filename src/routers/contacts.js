@@ -14,34 +14,30 @@ import {
 } from '../validation/contacts.js';
 import { validateMongoId } from '../middlewares/validateMongoId.js';
 
-const router = Router();
+const routerContacts = Router();
 
-router.use('/contacts/:contactId', validateMongoId('contactId'));
+routerContacts.use('/:contactId', validateMongoId('contactId'));
 
-router.get(
-  '/contacts',
+routerContacts.get(
+  '',
 
   ctrlWrapper(getContactsController),
 );
-router.get(
-  '/contacts/:contactId',
+routerContacts.get(
+  '/:contactId',
 
   ctrlWrapper(getContactsByIdController),
 );
-router.post(
-  '/contacts',
+routerContacts.post(
+  '',
   validateBody(createContactSchema),
   ctrlWrapper(createContactController),
 );
-router.patch(
-  '/contacts/:contactId',
+routerContacts.patch(
+  '/:contactId',
   validateBody(updateContactSchema),
   ctrlWrapper(patchContactsController),
 );
-router.delete(
-  '/contacts/:contactId',
+routerContacts.delete('/:contactId', ctrlWrapper(deleteContactsController));
 
-  ctrlWrapper(deleteContactsController),
-);
-
-export default router;
+export default routerContacts;
