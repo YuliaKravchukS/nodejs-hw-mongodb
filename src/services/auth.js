@@ -7,7 +7,6 @@ import jwt from 'jsonwebtoken';
 import { ENV_VAR } from '../constants/index.js';
 import { env } from '../utils/env.js';
 import { sendEmail } from '../utils/transporter.js';
-import { error } from 'console';
 
 const fifteen_min = 1000 * 60 * 15;
 export const one_month = 1000 * 60 * 60 * 24 * 30;

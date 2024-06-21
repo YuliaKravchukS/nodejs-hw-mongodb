@@ -134,3 +134,6 @@ dist
 .vscode
 .DS_Store
 .idea
+
+/temp
+/upload
