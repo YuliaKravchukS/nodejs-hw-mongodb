@@ -1,4 +1,4 @@
-import { Schema, SchemaType, model } from 'mongoose';
+import { Schema, model } from 'mongoose';
 const contactsSchema = new Schema(
   {
     name: {
@@ -28,6 +28,7 @@ const contactsSchema = new Schema(
       ref: 'users',
       required: true,
     },
+    photo: { type: String },
   },
   {
     timestamps: true,

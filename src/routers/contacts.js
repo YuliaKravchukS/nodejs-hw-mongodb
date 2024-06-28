@@ -14,32 +14,32 @@ import {
 } from '../validation/contacts.js';
 import { validateMongoId } from '../middlewares/validateMongoId.js';
 import { authenticate } from '../middlewares/authenticate.js';
+import { upload } from '../middlewares/multer.js';
 
 const routerContacts = Router();
 
 routerContacts.use('/:contactId', validateMongoId('contactId'));
+
 routerContacts.use('/', authenticate);
 
-routerContacts.get(
-  '',
+routerContacts.get('', ctrlWrapper(getContactsController));
 
-  ctrlWrapper(getContactsController),
-);
-routerContacts.get(
-  '/:contactId',
+routerContacts.get('/:contactId', ctrlWrapper(getContactsByIdController));
 
-  ctrlWrapper(getContactsByIdController),
-);
 routerContacts.post(
   '',
+  upload.single('photo'),
   validateBody(createContactSchema),
   ctrlWrapper(createContactController),
 );
+
 routerContacts.patch(
   '/:contactId',
-  validateBody(updateContactSchema),
+  upload.single('photo'),
+  // validateBody(updateContactSchema),
   ctrlWrapper(patchContactsController),
 );
+
 routerContacts.delete('/:contactId', ctrlWrapper(deleteContactsController));
 
 export default routerContacts;
