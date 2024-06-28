@@ -1,0 +1,34 @@
+openapi: 3.1.0
+info:
+  version: 1.0.0
+  title: <назва вашого додатку>
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  description: >
+    <опис вашого додатку>
+  # теги, що ви будете використовувати
+tags:
+  - name: Contacts
+    description: Operations about contacts.
+servers:
+  - url: http://localhost:3000
+  - url: https://hw4-validation-k1jm.onrender.com
+paths:
+   /contacts:
+    get:
+      $ref: ../swagger/paths/contacts/get.yaml
+    post:
+      $ref: ../swagger/paths/contacts/post.yaml
+  /contacts/{id}:
+    delete:
+      $ref: ../swagger/paths/contacts/{contactId}/delete.yaml
+    patch:
+      $ref: ../swagger/paths/contacts/{contactId}/patch.yaml
+    get:
+      $ref: ../swagger/paths/contacts/{contactId}/get.yaml
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
