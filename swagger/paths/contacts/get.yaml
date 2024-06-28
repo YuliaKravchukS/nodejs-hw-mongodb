@@ -20,7 +20,7 @@ parameters:
     name: sortBy
     schema:
       type: string
-      example: ''
+      example: 'name'
     description: "All contact's fields can be mentioned. Default value - _id"
   - in: query
     name: sortOrder
@@ -96,3 +96,5 @@ responses:
                 hasPreviousPage:
                   type: boolean
                   example: true
+  '404':
+    $ref: '../../components/responses/404.yaml'

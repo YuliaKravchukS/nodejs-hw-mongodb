@@ -7,7 +7,7 @@ security:
   - bearerAuth: []
 parameters:
   - in: path
-    name: id
+    name: contactId
     required: true
     schema:
       type: string
@@ -16,7 +16,7 @@ responses:
   '200':
     description: 'Successfully patched a contact!'
     content:
-      application/json:
+      multipart/form-data:
         schema:
           type: object
           required:

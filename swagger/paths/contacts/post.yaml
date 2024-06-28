@@ -28,7 +28,7 @@ requestBody:
           phoneNumber:
             description: "Contact's phone number"
             type: string
-            enum: '555-44-33'
+            example: '555-44-33'
           email:
             description: "Contact's email"
             type: string
