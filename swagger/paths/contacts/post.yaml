@@ -11,11 +11,8 @@ requestBody:
       schema:
         type: object
         required:
-          - _id
           - name
           - phoneNumber
-          - contactType
-          - userId
         properties:
           _id:
             description: "Contact's id"
@@ -50,6 +47,9 @@ requestBody:
             description: "Contact's photo"
             type: string
             format: binary
+      encoding:
+        photo:
+          contentType: image/*
 responses:
   '201':
     description: Creates a contact
@@ -73,3 +73,5 @@ responses:
               $ref: '../../components/schemas/contact.yaml'
   '404':
     $ref: '../../components/responses/404.yaml'
+  '401':
+    $ref: '../../components/responses/401.yaml'
