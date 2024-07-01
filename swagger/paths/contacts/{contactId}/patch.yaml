@@ -35,3 +35,5 @@ responses:
               $ref: ..\..\..\components\schemas\contact.yaml
   '404':
     $ref: ..\..\..\components\responses\404.yaml
+  '401':
+    $ref: ..\..\..\components\responses\404.yaml
